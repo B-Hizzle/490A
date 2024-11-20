@@ -79,13 +79,14 @@ ggplot(airline, aes(x = Class, fill = satisfaction)) +
 #this is code turning the categorical varaibles into dummy variables (1,0)
 names(airline)[6] <- "Class_Business"
 airline$satisfaction=ifelse(airline$satisfaction=="satisfied",1,0) #vs dissatisfied
-airline$Gender=ifelse(airline$Gender=="Female",1,0)
+airline$Gender=ifelse(airline$Gender=="female",1,0)
 airline$Customer_Type=ifelse(airline$Customer_Type=="Loyal Customer",1,0) #vs disloyal customer
 airline$Type_Travel=ifelse(airline$Type_Travel=="Personal Travel",1,0) # vs Business travel
-airline <- airline %>%
-  mutate(Class_Eco = ifelse(Class_Business == 'Eco', 1, 0))
-airline$Class_Business=ifelse(airline$Class_Business=="Business",1,0)
+airline$Class_Business <- ifelse(airline$Class_Business == "Eco",0,
+                                ifelse(airline$Class_Business == "Eco Plus", 1,2))
+airline <- airline
 View(airline)
+summary(airline)
 
 ```
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
