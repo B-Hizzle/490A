@@ -1,0 +1,82 @@
+---
+title: "Airline"
+author: "Lluvia Brambila"
+date: "2024-11-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+library(readr)
+library(ggplot2)
+airline_original <- read_csv("airline.csv",show_col_types = FALSE)
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+# Remove rows with any missing data
+airline <- na.omit(airline_original)
+
+#View(airline)
+```
+
+```{r}
+names(airline)[3] <- "Customer_Type"
+names(airline)[5] <- "Type_Travel"
+names(airline)[7] <- "Flight_Distance"
+names(airline)[8] <- "Seat_Comfort"
+names(airline)[9] <- "DepArrv_Time_Conv"
+names(airline)[10] <- "Food_Drink"
+names(airline)[11] <- "Gate_Locat"
+names(airline)[12] <- "Inflight_Wifi"
+names(airline)[13] <- "Inflight_Entmt"
+names(airline)[14] <- "Online_Support"
+names(airline)[15] <- "Ease_Online_Book"
+names(airline)[16] <- "Onboard_Service"
+names(airline)[17] <- "Legroom"
+names(airline)[18] <- "Baggage_Handling"
+names(airline)[19] <- "Checkin_Service"
+names(airline)[21] <- "Online_Boarding"
+names(airline)[22] <- "Dept_Delay_Min"
+names(airline)[23] <- "Arrv_Delay_Min"
+View(airline)
+
+```
+
+```{r}
+ggplot(airline, aes(x = Gender, y = Age, fill = Gender)) +
+  geom_boxplot() +  # Create box plot
+  labs(title = "Box Plot of Age by Gender", x = "Gender", y = "Age") +  # Add labels
+  theme_minimal() 
+
+ggplot(airline, aes(x = Class, y = Age, fill = Gender)) +
+  geom_boxplot() +  # Create box plot
+  labs(title = "Box Plot of Age by Gender", x = "Gender", y = "Age") +  # Add labels
+  theme_minimal() 
+
+ggplot(airline, aes(x = satisfaction, y = Inflight_Wifi, fill = satisfaction)) +
+  geom_boxplot() +  # Create box plot
+  labs(title = "Box Plot of Inflight Wifi by Satisfaction", x = "Satisfaction", y = "Infight Wifi") +  # Add labels
+  theme_minimal() 
+
+ggplot(airline, aes(x = satisfaction, y = Inflight_Entmt, fill = satisfaction)) +
+  geom_boxplot() +  # Create box plot
+  labs(title = "Box Plot of Inflight Entertainment by Satisfaction", x = "Satisfaction", y = "Infight Entertainment") +  # Add labels
+  theme_minimal() 
+
+
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
