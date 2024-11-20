@@ -57,16 +57,6 @@ View(airline)
 ```
 
 ```{r}
-ggplot(airline, aes(x = Gender, y = Age, fill = Gender)) +
-  geom_boxplot() +  # Create box plot
-  labs(title = "Box Plot of Age by Gender", x = "Gender", y = "Age") +  # Add labels
-  theme_minimal() 
-
-ggplot(airline, aes(x = Class, y = Age, fill = Gender)) +
-  geom_boxplot() +  # Create box plot
-  labs(title = "Box Plot of Age by Gender", x = "Gender", y = "Age") +  # Add labels
-  theme_minimal() 
-
 ggplot(airline, aes(x = satisfaction, y = Inflight_Wifi, fill = satisfaction)) +
   geom_boxplot() +  # Create box plot
   labs(title = "Box Plot of Inflight Wifi by Satisfaction", x = "Satisfaction", y = "Infight Wifi") +  # Add labels
@@ -76,6 +66,10 @@ ggplot(airline, aes(x = satisfaction, y = Inflight_Entmt, fill = satisfaction)) 
   geom_boxplot() +  # Create box plot
   labs(title = "Box Plot of Inflight Entertainment by Satisfaction", x = "Satisfaction", y = "Infight Entertainment") +  # Add labels
   theme_minimal() 
+
+ggplot(airline, aes(x = Class, fill = satisfaction)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Bar Plot of Class and Satisfaction")
 
 
 ```
