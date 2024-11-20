@@ -57,6 +57,7 @@ View(airline)
 ```
 
 ```{r}
+#this is visuals when first assessing the distribution of key varaibles
 ggplot(airline, aes(x = satisfaction, y = Inflight_Wifi, fill = satisfaction)) +
   geom_boxplot() +  # Create box plot
   labs(title = "Box Plot of Inflight Wifi by Satisfaction", x = "Satisfaction", y = "Infight Wifi") +  # Add labels
@@ -75,6 +76,7 @@ ggplot(airline, aes(x = Class, fill = satisfaction)) +
 ```
 
 ```{r}
+#this is code turning the categorical varaibles into dummy variables (1,0)
 names(airline)[6] <- "Class_Business"
 airline$satisfaction=ifelse(airline$satisfaction=="satisfied",1,0) #vs dissatisfied
 airline$Gender=ifelse(airline$Gender=="Female",1,0)
