@@ -77,7 +77,14 @@ ggplot(airline, aes(x = satisfaction, y = Inflight_Entmt, fill = satisfaction)) 
   labs(title = "Box Plot of Inflight Entertainment by Satisfaction", x = "Satisfaction", y = "Infight Entertainment") +  # Add labels
   theme_minimal() 
 
-airline$satisfaction=ifelse(airline$satisfaction=="satisfied",1,0)
+
+```
+
+```{r}
+airline$satisfaction=ifelse(airline$satisfaction=="satisfied",1,0) #vs dissatisfied
+airline$Gender=ifelse(airline$Gender=="female",1,0)
+airline$Customer_Type=ifelse(airline$Customer_Type=="Loyal Customer",1,0) #vs disloyal customer
+airline$Type_Travel=ifelse(airline$Type_Travel=="Personal Travel",1,0) # vs Business travel
 
 ```
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
